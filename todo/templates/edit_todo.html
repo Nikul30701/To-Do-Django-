@@ -10,33 +10,31 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" />
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Font Awesome 5 Brands:wght@400&display=swap" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <title>Add Todo</title>
+    <title>Edit Todo</title>
 </head>
 <body>
     <div class="signup-login">
         <div>
-            <div><h1>Hello {{user}}</h1></div>
+            <div class="centered-greeting" style="text-align: center; margin: 20px 0"><h1>Hello {{user}}</h1></div>
             <div class="signup-box src">
                  <div class="heading">
                      Get Things Done?
                  </div>
-                <div class="anca">
-                    <a href="{% url 'signout' %}"><i class="fa-solid fa-right-from-bracket"></i></a>
-                </div>
+
                 <form method="post">
                     {% csrf_token %}
                     <input type="text" required class="inp" placeholder="Add Today's Task!" name="title">
-                    <input type="submit"  class="submit-button" value="Add Task">
+                    <input type="hidden" name="srno" value={{obj.srno}}>
+                    <input type="submit"  class="submit-button" value="Update Task">
                 </form>
                 {% for todo in res %}
                   <div class="Todo">
                      <h5>{{todo.srno}}</h5>
                      <p>{{todo.title}}</p>
-                      <div>
-                          <a href="/edit_todo/{{todo.srno}}"><i class="fa-solid fa-pen-to-square"></i></a>
-                          <a href="/delete_todo/{{todo.srno}} "><i class="fa-solid fa-trash"></i></a>
-                      </div>
+                     <div>
+                        <a href="  "><i class="fa-solid fa-pen-to-square"></i></a>
+                        <a href="  "><i class="fa-solid fa-trash"></i></a>
+                     </div>
                   </div>
                 {% endfor %}
             </div>
@@ -44,3 +42,8 @@
     </div>
 </body>
 </html>
+
+
+
+
+
